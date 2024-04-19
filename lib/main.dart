@@ -13,25 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: CustomComponent(),
+      home: SingleChildScrollView(child: CustomComponent()),
     );
   }
 }
@@ -42,25 +27,24 @@ class CustomComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        // Imposta la larghezza del Container per riempire l'intera larghezza dello schermo
         padding: EdgeInsets.all(30.0),
         color: Colors.white,
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
+              /*Column(
                 children: [
                   Container(
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors
-                          .grey, // Puoi sostituire con il colore desiderato o con l'immagine
+                      color: Colors.grey,
                     ),
-                    // Qui inserisci la tua immagine rotonda
                   ),
                 ],
-              ),
+              ),*/
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +90,6 @@ class CustomComponent extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.start, children: [
             Expanded(
                 child: Column(children: [
-              // Campo di testo lungo
               Text(
                 'PERSONAL EXPERIENCES',
                 style: TextStyle(
@@ -145,107 +128,106 @@ class CustomComponent extends StatelessWidget {
                       color: Colors.black),
                 ),
               ),
-                  Text(
-                    'RELEVANT EXPERIENCES',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  Container(
-                    width: containerWidth,
-                    child: Text(
-                      '- Development of frontend, backend, mobile applications\n' +
-                          '- Design and development of relational and non-relational databases (SQL and NoSQL)\n' +
-                          '- Performance analysis of application loads, development of caching solutions to improve performance\n' +
-                          '- Development of solutions for securing applications (Penetration Testing)\n' +
-                          '- Design and development of Cloud infrastructure solutions on AWS\n' +
-                          '- Coordination of the development team and trainer for junior and middle resources of the team\n' +
-                          '- Analysis of customer requirements, drafting of technical solutions and cost estimates\n',
-                    style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
-                    ),
-                  ),
+              Text(
+                'RELEVANT EXPERIENCES',
+                style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+              Container(
+                width: containerWidth,
+                child: Text(
+                  '- Development of frontend, backend, mobile applications\n' +
+                      '- Design and development of relational and non-relational databases (SQL and NoSQL)\n' +
+                      '- Performance analysis of application loads, development of caching solutions to improve performance\n' +
+                      '- Development of solutions for securing applications (Penetration Testing)\n' +
+                      '- Design and development of Cloud infrastructure solutions on AWS\n' +
+                      '- Coordination of the development team and trainer for junior and middle resources of the team\n' +
+                      '- Analysis of customer requirements, drafting of technical solutions and cost estimates\n',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black),
+                ),
+              ),
             ])),
             Expanded(
                 child: Column(
-                  children: [
-                    Text(
-                      'PROFESSIONAL EXPERIENCES',
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    Container(
-                      width: containerWidth,
-                      child: Text(
-                        'Technical Leader, Full Stack Developer\nDeloitte Digital - (July 2018 - now) \nTechnical leader, lead developer for frontend, backend and mobile projects. Cloud architectures designer \nMain skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python\n',
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      width: containerWidth,
-                      child: Text(
-                        'Frontend Developer \nThinkOpen SPA - (October 2017 - July 2018) \nDeveloper for public administrations and banking platforms. Frontend developer \nMain skills: JavaScript, Sass, jQuery, Java, React\n',
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      width: containerWidth,
-                      child: Text(
-                        'Full Stack Developer \nFreelance for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS\n',
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Text(
-                      'TRAINING',
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    Container(
-                      width: containerWidth,
-                      child: Text(
-                        'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering, 86/110 \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010\n',
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Text(
-                      'CERTIFICATIONS',
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    Container(
-                      width: containerWidth,
-                      child: Text(
-                        '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship\n',
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ))
-
+              children: [
+                Text(
+                  'PROFESSIONAL EXPERIENCES',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Container(
+                  width: containerWidth,
+                  child: Text(
+                    'Technical Leader, Full Stack Developer\nDeloitte Digital - (July 2018 - now) \nTechnical leader, lead developer for frontend, backend and mobile projects. Cloud architectures designer \nMain skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python\n',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                ),
+                Container(
+                  width: containerWidth,
+                  child: Text(
+                    'Frontend Developer \nThinkOpen SPA - (October 2017 - July 2018) \nDeveloper for public administrations and banking platforms. Frontend developer \nMain skills: JavaScript, Sass, jQuery, Java, React\n',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                ),
+                Container(
+                  width: containerWidth,
+                  child: Text(
+                    'Full Stack Developer \nFreelance for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS\n',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                ),
+                Text(
+                  'TRAINING',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Container(
+                  width: containerWidth,
+                  child: Text(
+                    'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering, 86/110 \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010\n',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                ),
+                Text(
+                  'CERTIFICATIONS',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Container(
+                  width: containerWidth,
+                  child: Text(
+                    '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship\n',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black),
+                  ),
+                ),
+              ],
+            ))
           ])
         ]));
   }
