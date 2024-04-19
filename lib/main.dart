@@ -27,10 +27,10 @@ class CustomComponent extends StatelessWidget {
   final containerWidth = 500.0;
 
   TextStyle titleStyle = TextStyle(
-    fontSize: 16.0,
+    fontSize: 18.0,
     fontWeight: FontWeight.bold,
     color: Colors.blue,
-    letterSpacing: 5,
+    letterSpacing: 3,
     height: 3,
   );
 
@@ -44,10 +44,12 @@ class CustomComponent extends StatelessWidget {
         padding: EdgeInsets.all(20.0),
         color: Colors.white,
         child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              /*Column(
+          Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /*Column(
                 children: [
                   Container(
                     width: 100,
@@ -59,49 +61,52 @@ class CustomComponent extends StatelessWidget {
                   ),
                 ],
               ),*/
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Davide Perrotta',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        'Developer, Tech Lead',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        'Milano, Italy',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
                   children: [
                     Text(
-                      'Davide Perrotta',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Text(
-                      'Developer, Tech Lead',
+                      'www.davideperrotta.it',
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.black,
                       ),
                     ),
-                    Text(
-                      'Milano, Italy',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.black,
-                      ),
-                    ),
                   ],
                 ),
-              ),
-              Column(
-                children: [
-                  Text(
-                    'www.davideperrotta.it',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
             Expanded(
                 child: Column(children: [
               Text(
