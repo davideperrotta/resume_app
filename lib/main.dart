@@ -25,8 +25,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final containerWidth = 500.0;
-
 TextStyle titleStyle = TextStyle(
   fontSize: 18.0,
   fontWeight: FontWeight.bold,
@@ -35,6 +33,8 @@ TextStyle titleStyle = TextStyle(
   height: 2,
 );
 
+final separatorHeight = 30.0;
+
 TextStyle descriptionStyle = TextStyle(
     fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.black);
 
@@ -42,39 +42,39 @@ class LeftColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'PERSONAL EXPERIENCES',
           style: titleStyle,
         ),
         Container(
-          width: containerWidth,
           child: Text(
             'I’m a qualified ICT Engineer with Engineering Master’s Degree. I have relevant experience as Technical Leader and Developer, working as Frontend, Backend and Mobile Developer, using Cloud solutions. My functional roles are coordination among company management, customers management and development team to target the customers needs. I love coding and working with high skilled teams. I was born in 1991 in Catanzaro (Italy), and I work in digital industry from 2014, started at University. \n\nMy hobbies are coding, playing bass guitar and electric guitar in a band, doing some sports like running, mountain biking, kayaking, and reading books.',
             style: descriptionStyle,
           ),
         ),
+        SizedBox(height: separatorHeight),
         Text(
           'SKILLS',
           style: titleStyle,
         ),
         Container(
-          width: containerWidth,
           child: Text(
             '- Software Development\n' +
                 '- Architecture Design\n' +
                 '- Database Development\n' +
                 '- Technical management\n' +
-                '- Training\n',
+                '- Training',
             style: descriptionStyle,
           ),
         ),
+        SizedBox(height: separatorHeight),
         Text(
           'RELEVANT EXPERIENCES',
           style: titleStyle,
         ),
         Container(
-          width: containerWidth,
           child: Text(
             '- Development of frontend, backend, mobile applications\n' +
                 '- Design and development of relational and non-relational databases (SQL and NoSQL)\n' +
@@ -82,10 +82,11 @@ class LeftColumn extends StatelessWidget {
                 '- Development of solutions for securing applications (Penetration Testing)\n' +
                 '- Design and development of Cloud infrastructure solutions on AWS\n' +
                 '- Coordination of the development team and trainer for junior and middle resources of the team\n' +
-                '- Analysis of customer requirements, drafting of technical solutions and cost estimates\n',
+                '- Analysis of customer requirements, drafting of technical solutions and cost estimates',
             style: descriptionStyle,
           ),
         ),
+        SizedBox(height: separatorHeight),
       ],
     );
   }
@@ -94,54 +95,52 @@ class LeftColumn extends StatelessWidget {
 class RightColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         'PROFESSIONAL EXPERIENCES',
         style: titleStyle,
       ),
       Container(
-        width: containerWidth,
         child: Text(
           'Technical Leader, Full Stack Developer\nDeloitte Digital - (July 2018 - now) \nTechnical leader, lead developer for frontend, backend and mobile projects. Cloud architectures designer \nMain skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python\n',
           style: descriptionStyle,
         ),
       ),
       Container(
-        width: containerWidth,
         child: Text(
           'Frontend Developer \nThinkOpen SPA - (October 2017 - July 2018) \nDeveloper for public administrations and banking platforms. Frontend developer \nMain skills: JavaScript, Sass, jQuery, Java, React\n',
           style: descriptionStyle,
         ),
       ),
       Container(
-        width: containerWidth,
         child: Text(
-          'Full Stack Developer \nFreelance for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS\n',
+          'Full Stack Developer \nFreelance for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS',
           style: descriptionStyle,
         ),
       ),
+      SizedBox(height: separatorHeight),
       Text(
         'TRAINING',
         style: titleStyle,
       ),
       Container(
-        width: containerWidth,
         child: Text(
-          'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering, 86/110 \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010\n',
+          'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering, 86/110 \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010',
           style: descriptionStyle,
         ),
       ),
+      SizedBox(height: separatorHeight),
       Text(
         'CERTIFICATIONS',
         style: titleStyle,
       ),
       Container(
-        width: containerWidth,
         child: Text(
-          '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship\n',
+          '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship',
           style: descriptionStyle,
         ),
       ),
+      SizedBox(height: separatorHeight),
     ]);
   }
 }
@@ -155,7 +154,11 @@ class CustomComponent extends StatelessWidget {
         color: Colors.white,
         child: Column(children: [
           Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.only(
+              top: 10.0,
+              left: 30.0,
+              bottom: 20.0,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -232,24 +235,37 @@ class CustomComponent extends StatelessWidget {
                         DeviceScreenType.desktop) {
                       return Container(
                           child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
-                              child: Column(children: [
-                            LeftColumn(),
-                          ])),
+                              child: Padding(
+                                  padding: EdgeInsets.all(30.0),
+                                  child: Column(children: [
+                                    LeftColumn(),
+                                  ]))),
                           Expanded(
-                              child: Column(
-                            children: [
-                              RightColumn(),
-                            ],
-                          ))
+                              child: Padding(
+                                  padding: EdgeInsets.all(30.0),
+                                  child: Column(
+                                    children: [
+                                      RightColumn(),
+                                    ],
+                                  )))
                         ],
                       ));
                     } else {
                       return Column(
                         children: [
-                          LeftColumn(),
-                          RightColumn(),
+                          Padding(
+                            padding: EdgeInsets.all(30.0),
+                            child: Column (
+                              children: [
+                                LeftColumn(),
+                                RightColumn(),
+                              ],
+                            )
+                          )
+
                         ],
                       );
                     }
