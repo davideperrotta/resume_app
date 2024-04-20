@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,16 +32,15 @@ TextStyle titleStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.blue,
   letterSpacing: 3,
-  height: 3,
+  height: 2,
 );
 
 TextStyle descriptionStyle = TextStyle(
     fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.black);
 
 class LeftColumn extends StatelessWidget {
-
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
@@ -91,60 +92,57 @@ class LeftColumn extends StatelessWidget {
 }
 
 class RightColumn extends StatelessWidget {
-
   @override
-  Widget build (BuildContext context) {
-    return Column (
-      children: [
-        Text(
-          'PROFESSIONAL EXPERIENCES',
-          style: titleStyle,
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Text(
+        'PROFESSIONAL EXPERIENCES',
+        style: titleStyle,
+      ),
+      Container(
+        width: containerWidth,
+        child: Text(
+          'Technical Leader, Full Stack Developer\nDeloitte Digital - (July 2018 - now) \nTechnical leader, lead developer for frontend, backend and mobile projects. Cloud architectures designer \nMain skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python\n',
+          style: descriptionStyle,
         ),
-        Container(
-          width: containerWidth,
-          child: Text(
-            'Technical Leader, Full Stack Developer\nDeloitte Digital - (July 2018 - now) \nTechnical leader, lead developer for frontend, backend and mobile projects. Cloud architectures designer \nMain skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python\n',
-            style: descriptionStyle,
-          ),
+      ),
+      Container(
+        width: containerWidth,
+        child: Text(
+          'Frontend Developer \nThinkOpen SPA - (October 2017 - July 2018) \nDeveloper for public administrations and banking platforms. Frontend developer \nMain skills: JavaScript, Sass, jQuery, Java, React\n',
+          style: descriptionStyle,
         ),
-        Container(
-          width: containerWidth,
-          child: Text(
-            'Frontend Developer \nThinkOpen SPA - (October 2017 - July 2018) \nDeveloper for public administrations and banking platforms. Frontend developer \nMain skills: JavaScript, Sass, jQuery, Java, React\n',
-            style: descriptionStyle,
-          ),
+      ),
+      Container(
+        width: containerWidth,
+        child: Text(
+          'Full Stack Developer \nFreelance for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS\n',
+          style: descriptionStyle,
         ),
-        Container(
-          width: containerWidth,
-          child: Text(
-            'Full Stack Developer \nFreelance for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS\n',
-            style: descriptionStyle,
-          ),
+      ),
+      Text(
+        'TRAINING',
+        style: titleStyle,
+      ),
+      Container(
+        width: containerWidth,
+        child: Text(
+          'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering, 86/110 \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010\n',
+          style: descriptionStyle,
         ),
-        Text(
-          'TRAINING',
-          style: titleStyle,
+      ),
+      Text(
+        'CERTIFICATIONS',
+        style: titleStyle,
+      ),
+      Container(
+        width: containerWidth,
+        child: Text(
+          '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship\n',
+          style: descriptionStyle,
         ),
-        Container(
-          width: containerWidth,
-          child: Text(
-            'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering, 86/110 \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010\n',
-            style: descriptionStyle,
-          ),
-        ),
-        Text(
-          'CERTIFICATIONS',
-          style: titleStyle,
-        ),
-        Container(
-          width: containerWidth,
-          child: Text(
-            '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship\n',
-            style: descriptionStyle,
-          ),
-        ),
-      ]
-    );
+      ),
+    ]);
   }
 }
 
@@ -199,10 +197,17 @@ class CustomComponent extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
+                      Text(
+                        'www.davideperrotta.it',
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.blueAccent,
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                Column(
+                /*Column(
                   children: [
                     Text(
                       'www.davideperrotta.it',
@@ -212,24 +217,45 @@ class CustomComponent extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
+                ),*/
               ],
             ),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.start,
+          Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-            Expanded(
-                child: Column(children: [
-                LeftColumn(),
-            ])),
-            Expanded(
-                child: Column(
-              children: [
-                RightColumn(),
-              ],
-            ))
-          ])
+                Expanded(
+                  child:
+                      ResponsiveBuilder(builder: (context, sizingInformation) {
+                    if (sizingInformation.deviceScreenType ==
+                        DeviceScreenType.desktop) {
+                      return Container(
+                          child: Row(
+                        children: [
+                          Expanded(
+                              child: Column(children: [
+                            LeftColumn(),
+                          ])),
+                          Expanded(
+                              child: Column(
+                            children: [
+                              RightColumn(),
+                            ],
+                          ))
+                        ],
+                      ));
+                    } else {
+                      return Column(
+                        children: [
+                          LeftColumn(),
+                          RightColumn(),
+                        ],
+                      );
+                    }
+                  }),
+                ),
+              ])
         ]));
   }
 }
