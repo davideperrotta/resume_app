@@ -114,7 +114,7 @@ class RightColumn extends StatelessWidget {
       ),
       Container(
         child: Text(
-          'Full Stack Developer \nFreelance for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS',
+          'Full Stack Developer \nFreelancer for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS',
           style: descriptionStyle,
         ),
       ),
@@ -250,7 +250,7 @@ class CustomComponent extends StatelessWidget {
                                     children: [
                                       RightColumn(),
                                     ],
-                                  )))
+                                  ))),
                         ],
                       ));
                     } else {
@@ -264,14 +264,35 @@ class CustomComponent extends StatelessWidget {
                                 RightColumn(),
                               ],
                             )
-                          )
-
+                          ),
                         ],
                       );
                     }
                   }),
                 ),
-              ])
+              ]),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                      'assets/flutter-192.png',
+                    width: 40,
+                    height: 40,
+                  ),
+                  const Text(
+                    'made by Davide with Flutter',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.blueAccent,
+                    ),
+                  )
+                ],
+              )
+            ],
+          )
         ]));
   }
 }
