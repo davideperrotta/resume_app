@@ -125,7 +125,7 @@ class RightColumn extends StatelessWidget {
       ),
       Container(
         child: Text(
-          'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering, 86/110 \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010',
+          'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010',
           style: descriptionStyle,
         ),
       ),
