@@ -224,6 +224,7 @@ class MainPageComponent extends StatelessWidget {
                 ),
                 Column(
                   children: [
+                    customColor == Colors.white ?
                     ElevatedButton(
                       child: Text('Dark theme'),
                       style: ButtonStyle(
@@ -233,7 +234,7 @@ class MainPageComponent extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, '/dark');
                       },
-                    ),
+                    ) :
                     ElevatedButton(
                       child: Text('Light theme'),
                       style: ButtonStyle(
