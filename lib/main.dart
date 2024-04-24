@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/options_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +28,16 @@ class MyApp extends StatelessWidget {
         '/dark': (context) => Material(
             child: SingleChildScrollView(
                 child: MainPageComponent(customColor: Colors.black))),
+        '/cubit': (context) => Material(
+              child: MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => OptionsCubit(),
+                    ),
+                  ],
+                  child: SingleChildScrollView(
+                      child: MainPageComponent(customColor: Colors.green))),
+            )
       },
       /*home: Material(
           color: Colors.transparent,
@@ -42,6 +55,17 @@ TextStyle titleStyle = TextStyle(
 );
 
 final separatorHeight = 30.0;
+
+class CubitComponent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // Aggiungi qui gli elementi all'interno della colonna
+      ],
+    );
+  }
+}
 
 class LeftColumn extends StatelessWidget {
   final Color textColor;
@@ -224,27 +248,55 @@ class MainPageComponent extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    customColor == Colors.white ?
-                    ElevatedButton(
-                      child: Text('Dark theme'),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/dark');
-                      },
-                    ) :
-                    ElevatedButton(
-                      child: Text('Light theme'),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/');
-                      },
-                    ),
+                    customColor == Colors.white
+                        ? ElevatedButton(
+                            child: Text('Dark theme'),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.black),
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/dark');
+                            },
+                          )
+                        : ElevatedButton(
+                            child: Text('Light theme'),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.black),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/');
+                            },
+                          ),
+                    customColor == Colors.green
+                        ? Column(
+                            children: [
+                              FloatingActionButton(
+                                onPressed: () {
+                                  context.read<OptionsCubit>().increment();
+                                },
+                                tooltip: 'Increment',
+                                child: const Icon(Icons.add),
+                              ),
+                              BlocBuilder<OptionsCubit, OptionsState>(
+                                builder: (context, state) {
+                                  return Text(
+                                    'cubit: ${state.counter}',
+                                    style: const TextStyle(fontSize: 24),
+                                  );
+                                },
+                              ),
+                            ],
+                          )
+                        : Container(
+                            width: 0,
+                            height: 0,
+                          ),
                   ],
                 ),
               ],
