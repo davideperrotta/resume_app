@@ -18,9 +18,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: Material(
+      routes: {
+        '/': (context) => Material(
+            child: SingleChildScrollView(
+                child: MainPageComponent(customColor: Colors.white))),
+        '/dark': (context) => Material(
+            child: SingleChildScrollView(
+                child: MainPageComponent(customColor: Colors.black))),
+      },
+      /*home: Material(
           color: Colors.transparent,
-          child: SingleChildScrollView(child: CustomComponent())),
+          child: SingleChildScrollView(child: MainPageComponent())),*/
     );
   }
 }
@@ -35,12 +43,16 @@ TextStyle titleStyle = TextStyle(
 
 final separatorHeight = 30.0;
 
-TextStyle descriptionStyle = TextStyle(
-    fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.black);
-
 class LeftColumn extends StatelessWidget {
+  final Color textColor;
+
+  LeftColumn({required this.textColor});
+
   @override
   Widget build(BuildContext context) {
+    TextStyle descriptionStyle = TextStyle(
+        fontSize: 16.0, fontWeight: FontWeight.normal, color: textColor);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -93,8 +105,15 @@ class LeftColumn extends StatelessWidget {
 }
 
 class RightColumn extends StatelessWidget {
+  final Color textColor;
+
+  RightColumn({required this.textColor});
+
   @override
   Widget build(BuildContext context) {
+    TextStyle descriptionStyle = TextStyle(
+        fontSize: 16.0, fontWeight: FontWeight.normal, color: textColor);
+
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         'PROFESSIONAL EXPERIENCES',
@@ -145,13 +164,18 @@ class RightColumn extends StatelessWidget {
   }
 }
 
-class CustomComponent extends StatelessWidget {
+class MainPageComponent extends StatelessWidget {
+  final Color? customColor;
+  MainPageComponent({required this.customColor});
+
   @override
   Widget build(BuildContext context) {
+    Color textColor =
+        (customColor == Colors.black) ? Colors.white : Colors.black;
     return Container(
         width: double.infinity,
         padding: EdgeInsets.all(20.0),
-        color: Colors.white,
+        color: customColor,
         child: Column(children: [
           Padding(
             padding: EdgeInsets.only(
@@ -162,18 +186,6 @@ class CustomComponent extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                /*Column(
-                children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),*/
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,44 +195,57 @@ class CustomComponent extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0,
-                          color: Colors.black,
+                          color: textColor,
                         ),
                       ),
                       Text(
                         'Developer, Tech Lead',
                         style: TextStyle(
                           fontSize: 16.0,
-                          color: Colors.black,
+                          color: textColor,
                         ),
                       ),
                       Text(
                         'Milano, Italy',
                         style: TextStyle(
                           fontSize: 14.0,
-                          color: Colors.black,
+                          color: textColor,
                         ),
                       ),
                       Text(
                         'www.davideperrotta.it',
                         style: TextStyle(
                           fontSize: 12.0,
-                          color: Colors.blueAccent,
+                          color: Colors.blue,
                         ),
                       ),
                     ],
                   ),
                 ),
-                /*Column(
+                Column(
                   children: [
-                    Text(
-                      'www.davideperrotta.it',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
+                    ElevatedButton(
+                      child: Text('Dark theme'),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                       ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/dark');
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text('Light theme'),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/');
+                      },
                     ),
                   ],
-                ),*/
+                ),
               ],
             ),
           ),
@@ -241,14 +266,14 @@ class CustomComponent extends StatelessWidget {
                               child: Padding(
                                   padding: EdgeInsets.all(30.0),
                                   child: Column(children: [
-                                    LeftColumn(),
+                                    LeftColumn(textColor: textColor),
                                   ]))),
                           Expanded(
                               child: Padding(
                                   padding: EdgeInsets.all(30.0),
                                   child: Column(
                                     children: [
-                                      RightColumn(),
+                                      RightColumn(textColor: textColor),
                                     ],
                                   ))),
                         ],
@@ -257,14 +282,13 @@ class CustomComponent extends StatelessWidget {
                       return Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(30.0),
-                            child: Column (
-                              children: [
-                                LeftColumn(),
-                                RightColumn(),
-                              ],
-                            )
-                          ),
+                              padding: EdgeInsets.all(30.0),
+                              child: Column(
+                                children: [
+                                  LeftColumn(textColor: textColor),
+                                  RightColumn(textColor: textColor),
+                                ],
+                              )),
                         ],
                       );
                     }
@@ -278,7 +302,7 @@ class CustomComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                      'assets/flutter-192.png',
+                    'assets/flutter-192.png',
                     width: 40,
                     height: 40,
                   ),
