@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'cubit/options_cubit.dart';
+import 'customComponent.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,31 +21,28 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        '/': (context) => Material(
+        '/': (context) => const Material(
             child: SingleChildScrollView(
                 child: MainPageComponent(customColor: Colors.white))),
-        '/dark': (context) => Material(
+        '/dark': (context) => const Material(
             child: SingleChildScrollView(
                 child: MainPageComponent(customColor: Colors.black))),
         '/cubit': (context) => Material(
-              child: MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                      create: (context) => OptionsCubit(),
-                    ),
-                  ],
-                  child: SingleChildScrollView(
-                      child: MainPageComponent(customColor: Colors.green))),
+              child: MultiBlocProvider(providers: [
+                BlocProvider(
+                  create: (context) => OptionsCubit(),
+                ),
+                BlocProvider(
+                  create: (context) => ApiCubit(),
+                ),
+              ], child: const SingleChildScrollView(child: CubitComponent())),
             )
       },
-      /*home: Material(
-          color: Colors.transparent,
-          child: SingleChildScrollView(child: MainPageComponent())),*/
     );
   }
 }
 
-TextStyle titleStyle = TextStyle(
+TextStyle titleStyle = const TextStyle(
   fontSize: 18.0,
   fontWeight: FontWeight.bold,
   color: Colors.blue,
@@ -54,23 +50,12 @@ TextStyle titleStyle = TextStyle(
   height: 2,
 );
 
-final separatorHeight = 30.0;
-
-class CubitComponent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // Aggiungi qui gli elementi all'interno della colonna
-      ],
-    );
-  }
-}
+const separatorHeight = 30.0;
 
 class LeftColumn extends StatelessWidget {
   final Color textColor;
 
-  LeftColumn({required this.textColor});
+  const LeftColumn({super.key, required this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -90,39 +75,29 @@ class LeftColumn extends StatelessWidget {
             style: descriptionStyle,
           ),
         ),
-        SizedBox(height: separatorHeight),
+        const SizedBox(height: separatorHeight),
         Text(
           'SKILLS',
           style: titleStyle,
         ),
         Container(
           child: Text(
-            '- Software Development\n' +
-                '- Architecture Design\n' +
-                '- Database Development\n' +
-                '- Technical management\n' +
-                '- Training',
+            '- Software Development\n- Architecture Design\n- Database Development\n- Technical management\n- Training',
             style: descriptionStyle,
           ),
         ),
-        SizedBox(height: separatorHeight),
+        const SizedBox(height: separatorHeight),
         Text(
           'RELEVANT EXPERIENCES',
           style: titleStyle,
         ),
         Container(
           child: Text(
-            '- Development of frontend, backend, mobile applications\n' +
-                '- Design and development of relational and non-relational databases (SQL and NoSQL)\n' +
-                '- Performance analysis of application loads, development of caching solutions to improve performance\n' +
-                '- Development of solutions for securing applications (Penetration Testing)\n' +
-                '- Design and development of Cloud infrastructure solutions on AWS\n' +
-                '- Coordination of the development team and trainer for junior and middle resources of the team\n' +
-                '- Analysis of customer requirements, drafting of technical solutions and cost estimates',
+            '- Development of frontend, backend, mobile applications\n- Design and development of relational and non-relational databases (SQL and NoSQL)\n- Performance analysis of application loads, development of caching solutions to improve performance\n- Development of solutions for securing applications (Penetration Testing)\n- Design and development of Cloud infrastructure solutions on AWS\n- Coordination of the development team and trainer for junior and middle resources of the team\n- Analysis of customer requirements, drafting of technical solutions and cost estimates',
             style: descriptionStyle,
           ),
         ),
-        SizedBox(height: separatorHeight),
+        const SizedBox(height: separatorHeight),
       ],
     );
   }
@@ -131,7 +106,7 @@ class LeftColumn extends StatelessWidget {
 class RightColumn extends StatelessWidget {
   final Color textColor;
 
-  RightColumn({required this.textColor});
+  const RightColumn({super.key, required this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +136,7 @@ class RightColumn extends StatelessWidget {
           style: descriptionStyle,
         ),
       ),
-      SizedBox(height: separatorHeight),
+      const SizedBox(height: separatorHeight),
       Text(
         'TRAINING',
         style: titleStyle,
@@ -172,7 +147,7 @@ class RightColumn extends StatelessWidget {
           style: descriptionStyle,
         ),
       ),
-      SizedBox(height: separatorHeight),
+      const SizedBox(height: separatorHeight),
       Text(
         'CERTIFICATIONS',
         style: titleStyle,
@@ -183,14 +158,14 @@ class RightColumn extends StatelessWidget {
           style: descriptionStyle,
         ),
       ),
-      SizedBox(height: separatorHeight),
+      const SizedBox(height: separatorHeight),
     ]);
   }
 }
 
 class MainPageComponent extends StatelessWidget {
   final Color? customColor;
-  MainPageComponent({required this.customColor});
+  const MainPageComponent({super.key, required this.customColor});
 
   @override
   Widget build(BuildContext context) {
@@ -198,11 +173,11 @@ class MainPageComponent extends StatelessWidget {
         (customColor == Colors.black) ? Colors.white : Colors.black;
     return Container(
         width: double.infinity,
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         color: customColor,
         child: Column(children: [
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               top: 10.0,
               left: 30.0,
               bottom: 20.0,
@@ -236,7 +211,7 @@ class MainPageComponent extends StatelessWidget {
                           color: textColor,
                         ),
                       ),
-                      Text(
+                      const Text(
                         'www.davideperrotta.it',
                         style: TextStyle(
                           fontSize: 12.0,
@@ -250,7 +225,6 @@ class MainPageComponent extends StatelessWidget {
                   children: [
                     customColor == Colors.white
                         ? ElevatedButton(
-                            child: Text('Dark theme'),
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   Colors.black),
@@ -260,9 +234,9 @@ class MainPageComponent extends StatelessWidget {
                             onPressed: () {
                               Navigator.pushNamed(context, '/dark');
                             },
+                            child: const Text('Dark theme'),
                           )
                         : ElevatedButton(
-                            child: Text('Light theme'),
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   Colors.white),
@@ -272,30 +246,7 @@ class MainPageComponent extends StatelessWidget {
                             onPressed: () {
                               Navigator.pushNamed(context, '/');
                             },
-                          ),
-                    customColor == Colors.green
-                        ? Column(
-                            children: [
-                              FloatingActionButton(
-                                onPressed: () {
-                                  context.read<OptionsCubit>().increment();
-                                },
-                                tooltip: 'Increment',
-                                child: const Icon(Icons.add),
-                              ),
-                              BlocBuilder<OptionsCubit, OptionsState>(
-                                builder: (context, state) {
-                                  return Text(
-                                    'cubit: ${state.counter}',
-                                    style: const TextStyle(fontSize: 24),
-                                  );
-                                },
-                              ),
-                            ],
-                          )
-                        : Container(
-                            width: 0,
-                            height: 0,
+                            child: const Text('Light theme'),
                           ),
                   ],
                 ),
@@ -317,13 +268,13 @@ class MainPageComponent extends StatelessWidget {
                         children: [
                           Expanded(
                               child: Padding(
-                                  padding: EdgeInsets.all(30.0),
+                                  padding: const EdgeInsets.all(30.0),
                                   child: Column(children: [
                                     LeftColumn(textColor: textColor),
                                   ]))),
                           Expanded(
                               child: Padding(
-                                  padding: EdgeInsets.all(30.0),
+                                  padding: const EdgeInsets.all(30.0),
                                   child: Column(
                                     children: [
                                       RightColumn(textColor: textColor),
@@ -335,7 +286,7 @@ class MainPageComponent extends StatelessWidget {
                       return Column(
                         children: [
                           Padding(
-                              padding: EdgeInsets.all(30.0),
+                              padding: const EdgeInsets.all(30.0),
                               child: Column(
                                 children: [
                                   LeftColumn(textColor: textColor),

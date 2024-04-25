@@ -4,9 +4,17 @@ import 'package:equatable/equatable.dart';
 part 'options_state.dart';
 
 class OptionsCubit extends Cubit<OptionsState> {
-  OptionsCubit() : super(OptionsInitial(counter: 0));
+  OptionsCubit() : super(const OptionsInitial(counter: 0));
 
   void increment() {
     emit(state.copyWith(counter: state.counter + 1));
+  }
+}
+
+class ApiCubit extends Cubit<ApiState> {
+  ApiCubit() : super(const ApiState(apiValue: ''));
+
+  void setApiValue(String newString) {
+    emit(ApiState(apiValue: newString));
   }
 }

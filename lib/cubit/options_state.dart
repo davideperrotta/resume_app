@@ -21,3 +21,12 @@ final class OptionsInitial extends OptionsState {
   @override
   List<Object> get props => [];
 }
+
+class ApiState extends Equatable {
+  final String apiValue;
+
+  const ApiState({required this.apiValue});
+
+  @override
+  List<Object?> get props => [apiValue];
+}
