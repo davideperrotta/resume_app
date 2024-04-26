@@ -61,7 +61,7 @@ class CubitComponent extends StatelessWidget {
                 );
               },
             ),
-            Text('This is a test page for cubit')
+            const Text('This is a test page for cubit')
           ],
         )
       ],

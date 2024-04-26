@@ -119,33 +119,149 @@ class RightColumn extends StatelessWidget {
         style: titleStyle,
       ),
       Container(
-        child: Text(
-          'Technical Leader, Full Stack Developer\nDeloitte Digital - (July 2018 - now) \nTechnical leader, lead developer for frontend, backend and mobile projects. Cloud architectures designer \nMain skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python\n',
-          style: descriptionStyle,
-        ),
-      ),
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Deloitte Digital - (July 2018 - now)',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.lightBlue,
+            )),
+          ),
+          Text(
+            'Technical Leader, Full Stack Developer',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+          ),
+          Text(
+            'Lead developer for frontend, backend and mobile projects. Cloud architectures designer',
+            style: descriptionStyle,
+          ),
+          Text(
+            'Main skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python',
+            style: descriptionStyle.merge(const TextStyle(
+              fontStyle: FontStyle.italic,
+              fontSize: 14,
+            )),
+          ),
+          const SizedBox(
+            height: 20,
+          )
+        ],
+      )),
       Container(
-        child: Text(
-          'Frontend Developer \nThinkOpen SPA - (October 2017 - July 2018) \nDeveloper for public administrations and banking platforms. Frontend developer \nMain skills: JavaScript, Sass, jQuery, Java, React\n',
-          style: descriptionStyle,
-        ),
-      ),
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'ThinkOpen SPA - (October 2017 - July 2018)',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.lightBlue,
+            )),
+          ),
+          Text(
+            'Frontend Developer',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+          ),
+          Text(
+            'Developer for public administrations and banking platforms',
+            style: descriptionStyle,
+          ),
+          Text(
+            'Main skills: JavaScript, Sass, jQuery, Java, React',
+            style: descriptionStyle.merge(const TextStyle(
+              fontStyle: FontStyle.italic,
+              fontSize: 14,
+            )),
+          ),
+          const SizedBox(
+            height: 20,
+          )
+        ],
+      )),
       Container(
-        child: Text(
-          'Full Stack Developer \nFreelancer for web agencies - (March 2015 - April 2017) \nBackend and Frontend developer for e-commerce platforms. \nMain skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS',
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Freelancer for web agencies - (March 2015 - April 2017)',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.lightBlue,
+            )),
+          ),
+          Text(
+            'Full Stack Developer',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+          ),
+          Text(
+            'Backend and Frontend developer for e-commerce platforms',
+            style: descriptionStyle,
+          ),
+          Text(
+            'Main skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS, web hosting',
+            style: descriptionStyle.merge(const TextStyle(
+              fontStyle: FontStyle.italic,
+              fontSize: 14,
+            )),
+          ),
+        ],
+      ) /*Text(
           style: descriptionStyle,
-        ),
-      ),
+        ),*/
+          ),
       const SizedBox(height: separatorHeight),
       Text(
         'TRAINING',
         style: titleStyle,
       ),
       Container(
-        child: Text(
-          'Politecnico di Milano, 2023 \nState exam for qualification of ICT Engineer \n\nUniversità Magna Graecia di Catanzaro, 2017 \nMaster’s Degree in Biomedical Engineering, 106/110 \n\nUniversità Magna Graecia di Catanzaro, 2015 \nBachelor Degree in Computer and Biomedical Engineering \n\nScientific High School Luigi Siciliani, Catanzaro, 2005 - 2010',
-          style: descriptionStyle,
-        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(
+            'Politecnico di Milano, 2023 ',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+          ),
+          Text(
+            'State exam for qualification of ICT Engineer',
+            style: descriptionStyle,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Università Magna Graecia di Catanzaro, 2017 ',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+          ),
+          Text(
+            'Master’s Degree in Biomedical Engineering, 106/110',
+            style: descriptionStyle,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Università Magna Graecia di Catanzaro, 2015',
+            style: descriptionStyle.merge(const TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
+          ),
+          Text(
+            'Bachelor Degree in Computer and Biomedical Engineering',
+            style: descriptionStyle,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Scientific High School Luigi Siciliani, Catanzaro, 2005 - 2010',
+            style: descriptionStyle,
+          )
+        ]),
       ),
       const SizedBox(height: separatorHeight),
       Text(
