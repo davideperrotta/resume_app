@@ -3,6 +3,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/options_cubit.dart';
 import 'customComponent.dart';
+import 'labels.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,12 +22,26 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        '/': (context) => const Material(
-            child: SingleChildScrollView(
-                child: MainPageComponent(customColor: Colors.white))),
-        '/dark': (context) => const Material(
-            child: SingleChildScrollView(
-                child: MainPageComponent(customColor: Colors.black))),
+        '/': (context) => Material(
+              child: MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => OptionsCubit(),
+                    ),
+                  ],
+                  child: const SingleChildScrollView(
+                      child: MainPageComponent(customColor: Colors.white))),
+            ),
+        '/dark': (context) => Material(
+              child: MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => OptionsCubit(),
+                    ),
+                  ],
+                  child: const SingleChildScrollView(
+                      child: MainPageComponent(customColor: Colors.black))),
+            ),
         '/cubit': (context) => Material(
               child: MultiBlocProvider(providers: [
                 BlocProvider(
@@ -62,43 +77,47 @@ class LeftColumn extends StatelessWidget {
     TextStyle descriptionStyle = TextStyle(
         fontSize: 16.0, fontWeight: FontWeight.normal, color: textColor);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'PERSONAL EXPERIENCES',
-          style: titleStyle,
-        ),
-        Container(
-          child: Text(
-            'I was born in 1991 in Catanzaro (Italy), and I have been working in digital industry since 2014, starting from University.\nI’m a qualified ICT Engineer with Engineering Master’s Degree. I have relevant experience as technical leader and developer, working as frontend, backend and mobile developer, using cloud solutions. My functional roles are coordination among company management, customers management and development team to target the customers needs. I love coding and working with high skilled teams.\n\nMy hobbies are coding, playing bass guitar and electric guitar in a band, doing some sports like running, mountain biking, kayaking, and reading books.',
-            style: descriptionStyle,
-          ),
-        ),
-        const SizedBox(height: separatorHeight),
-        Text(
-          'SKILLS',
-          style: titleStyle,
-        ),
-        Container(
-          child: Text(
-            '- Software Development\n- Architecture Design\n- Database Development\n- Technical management\n- Training',
-            style: descriptionStyle,
-          ),
-        ),
-        const SizedBox(height: separatorHeight),
-        Text(
-          'RELEVANT EXPERIENCES',
-          style: titleStyle,
-        ),
-        Container(
-          child: Text(
-            '- Development of frontend, backend, mobile applications\n- Design and development of relational and non-relational databases (SQL and NoSQL)\n- Performance analysis of application loads, development of caching solutions to improve performance\n- Development of solutions for securing applications (Penetration Testing)\n- Design and development of Cloud infrastructure solutions on AWS\n- Coordination of the development team and training for junior and middle resources of the team\n- Analysis of customer requirements, drafting of technical solutions and cost estimates',
-            style: descriptionStyle,
-          ),
-        ),
-        const SizedBox(height: separatorHeight),
-      ],
+    return BlocBuilder<OptionsCubit, OptionsState>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              labels[state.language]?['personalExperiencesTitle'] ?? '',
+              style: titleStyle,
+            ),
+            Container(
+              child: Text(
+                labels[state.language]?['personalExperiencesDesc'] ?? '',
+                style: descriptionStyle,
+              ),
+            ),
+            const SizedBox(height: separatorHeight),
+            Text(
+              labels[state.language]?['skillsTitle'] ?? '',
+              style: titleStyle,
+            ),
+            Container(
+              child: Text(
+                labels[state.language]?['skillsDesc'] ?? '',
+                style: descriptionStyle,
+              ),
+            ),
+            const SizedBox(height: separatorHeight),
+            Text(
+              'RELEVANT EXPERIENCES',
+              style: titleStyle,
+            ),
+            Container(
+              child: Text(
+                '- Development of frontend, backend, mobile applications\n- Design and development of relational and non-relational databases (SQL and NoSQL)\n- Performance analysis of application loads, development of caching solutions to improve performance\n- Development of solutions for securing applications (Penetration Testing)\n- Design and development of Cloud infrastructure solutions on AWS\n- Coordination of the development team and training for junior and middle resources of the team\n- Analysis of customer requirements, drafting of technical solutions and cost estimates',
+                style: descriptionStyle,
+              ),
+            ),
+            const SizedBox(height: separatorHeight),
+          ],
+        );
+      },
     );
   }
 }
@@ -364,6 +383,44 @@ class MainPageComponent extends StatelessWidget {
                             },
                             child: const Text('Light theme'),
                           ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              context.read<OptionsCubit>().setLanguage('en');
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Colors.white), // Colore di sfondo del bottone
+                            ),
+                            child: const Text('\u{1F1EC}\u{1F1E7}'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              context.read<OptionsCubit>().setLanguage('it');
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Colors.white), // Colore di sfondo del bottone
+                            ),
+                            child: const Text('\u{1F1EE}\u{1F1F9}'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              context.read<OptionsCubit>().setLanguage('es');
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Colors.white), // Colore di sfondo del bottone
+                            ),
+                            child: const Text('\u{1F1EA}\u{1F1F8}'),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ],
@@ -434,7 +491,7 @@ class MainPageComponent extends StatelessWidget {
                     ),
                   )
                 ],
-              )
+              ),
             ],
           )
         ]));

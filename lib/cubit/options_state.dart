@@ -2,21 +2,23 @@ part of 'options_cubit.dart';
 
 class OptionsState extends Equatable {
   final int counter;
-  const OptionsState({required this.counter});
+  final String language;
+  const OptionsState({required this.counter, required this.language});
 
   @override
-  List<Object?> get props => [counter];
+  List<Object?> get props => [counter, language];
 
-  OptionsState copyWith({int? counter}) {
+  OptionsState copyWith({int? counter, String? language}) {
     return OptionsState(
       counter: counter ?? this.counter,
+      language: language ?? this.language,
     );
   }
 }
 
 final class OptionsInitial extends OptionsState {
 
-  const OptionsInitial({required counter}) : super(counter: 0);
+  const OptionsInitial({required counter, language}) : super(counter: 0, language: 'en');
 
   @override
   List<Object> get props => [];
