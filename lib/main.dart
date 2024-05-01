@@ -105,12 +105,12 @@ class LeftColumn extends StatelessWidget {
             ),
             const SizedBox(height: separatorHeight),
             Text(
-              'RELEVANT EXPERIENCES',
+              labels[state.language]?['relevantExperiencesTitle'] ?? '',
               style: titleStyle,
             ),
             Container(
               child: Text(
-                '- Development of frontend, backend, mobile applications\n- Design and development of relational and non-relational databases (SQL and NoSQL)\n- Performance analysis of application loads, development of caching solutions to improve performance\n- Development of solutions for securing applications (Penetration Testing)\n- Design and development of Cloud infrastructure solutions on AWS\n- Coordination of the development team and training for junior and middle resources of the team\n- Analysis of customer requirements, drafting of technical solutions and cost estimates',
+                labels[state.language]?['relevantExperiencesDesc'] ?? '',
                 style: descriptionStyle,
               ),
             ),
