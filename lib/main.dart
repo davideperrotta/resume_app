@@ -386,48 +386,61 @@ class MainPageComponent extends StatelessWidget {
                             },
                             child: const Text('Light theme'),
                           ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              context.read<OptionsCubit>().setLanguage('en');
-                            },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
-                            ),
-                            child: const Text('\u{1F1EC}\u{1F1E7}'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              context.read<OptionsCubit>().setLanguage('it');
-                            },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
-                            ),
-                            child: const Text('\u{1F1EE}\u{1F1F9}'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              context.read<OptionsCubit>().setLanguage('es');
-                            },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
-                            ),
-                            child: const Text('\u{1F1EA}\u{1F1F8}'),
-                          ),
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ],
             ),
+          ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.read<OptionsCubit>().setLanguage('en');
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        child: const Text('\u{1F1EC}\u{1F1E7}'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.read<OptionsCubit>().setLanguage('it');
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        child: const Text('\u{1F1EE}\u{1F1F9}'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.read<OptionsCubit>().setLanguage('es');
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        child: const Text('\u{1F1EA}\u{1F1F8}'),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
           Row(
               mainAxisAlignment: MainAxisAlignment.start,
