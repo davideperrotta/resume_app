@@ -132,169 +132,172 @@ class RightColumn extends StatelessWidget {
     TextStyle descriptionStyle = TextStyle(
         fontSize: 16.0, fontWeight: FontWeight.normal, color: textColor);
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(
-        'PROFESSIONAL EXPERIENCES',
-        style: titleStyle,
-      ),
-      Container(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Deloitte Digital - (July 2018 - now)',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.lightBlue,
-            )),
-          ),
-          Text(
-            'Technical Leader, Full Stack Developer',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-          ),
-          Text(
-            'Lead developer for frontend, backend and mobile projects. Cloud architectures designer',
-            style: descriptionStyle,
-          ),
-          Text(
-            'Main skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python',
-            style: descriptionStyle.merge(const TextStyle(
-              fontStyle: FontStyle.italic,
-              fontSize: 14,
-            )),
-          ),
-          const SizedBox(
-            height: 20,
-          )
-        ],
-      )),
-      Container(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'ThinkOpen SPA - (October 2017 - July 2018)',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.lightBlue,
-            )),
-          ),
-          Text(
-            'Frontend Developer',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-          ),
-          Text(
-            'Developer for public administrations and banking platforms',
-            style: descriptionStyle,
-          ),
-          Text(
-            'Main skills: JavaScript, Sass, jQuery, Java, React',
-            style: descriptionStyle.merge(const TextStyle(
-              fontStyle: FontStyle.italic,
-              fontSize: 14,
-            )),
-          ),
-          const SizedBox(
-            height: 20,
-          )
-        ],
-      )),
-      Container(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Freelancer for web agencies - (March 2015 - April 2017)',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.lightBlue,
-            )),
-          ),
-          Text(
-            'Full Stack Developer',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-          ),
-          Text(
-            'Backend and Frontend developer for e-commerce platforms',
-            style: descriptionStyle,
-          ),
-          Text(
-            'Main skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS, web hosting',
-            style: descriptionStyle.merge(const TextStyle(
-              fontStyle: FontStyle.italic,
-              fontSize: 14,
-            )),
-          ),
-        ],
-      ) /*Text(
+    return BlocBuilder<OptionsCubit, OptionsState>(builder: (context, state) {
+      return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(
+          labels[state.language]?['professionalExperiencesTitle'] ?? '',
+          style: titleStyle,
+        ),
+        Container(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Deloitte Digital - (July 2018 - now)',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.lightBlue,
+              )),
+            ),
+            Text(
+              'Technical Leader, Full Stack Developer',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+            ),
+            Text(
+              labels[state.language]?['professionalExperiencesDesc1'] ?? '',
+              style: descriptionStyle,
+            ),
+            Text(
+              'Main skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python',
+              style: descriptionStyle.merge(const TextStyle(
+                fontStyle: FontStyle.italic,
+                fontSize: 14,
+              )),
+            ),
+            const SizedBox(
+              height: 20,
+            )
+          ],
+        )),
+        Container(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'ThinkOpen SPA - (October 2017 - July 2018)',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.lightBlue,
+              )),
+            ),
+            Text(
+              'Frontend Developer',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+            ),
+            Text(
+              labels[state.language]?['professionalExperiencesDesc2'] ?? '',
+              style: descriptionStyle,
+            ),
+            Text(
+              'Main skills: JavaScript, Sass, jQuery, Java, React',
+              style: descriptionStyle.merge(const TextStyle(
+                fontStyle: FontStyle.italic,
+                fontSize: 14,
+              )),
+            ),
+            const SizedBox(
+              height: 20,
+            )
+          ],
+        )),
+        Container(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Freelancer for web agencies - (March 2015 - April 2017)',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.lightBlue,
+              )),
+            ),
+            Text(
+              'Full Stack Developer',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+            ),
+            Text(
+              labels[state.language]?['professionalExperiencesDesc3'] ?? '',
+              style: descriptionStyle,
+            ),
+            Text(
+              'Main skills: PHP, Apache, Linux, MySQL, WordPress and others PHP based CMS, web hosting',
+              style: descriptionStyle.merge(const TextStyle(
+                fontStyle: FontStyle.italic,
+                fontSize: 14,
+              )),
+            ),
+          ],
+        ) /*Text(
           style: descriptionStyle,
         ),*/
-          ),
-      const SizedBox(height: separatorHeight),
-      Text(
-        'TRAINING',
-        style: titleStyle,
-      ),
-      Container(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            'Politecnico di Milano, 2023 ',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-          ),
-          Text(
-            'State exam for qualification of ICT Engineer',
-            style: descriptionStyle,
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Università Magna Graecia di Catanzaro, 2017 ',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-          ),
-          Text(
-            'Master’s Degree in Biomedical Engineering, 106/110',
-            style: descriptionStyle,
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Università Magna Graecia di Catanzaro, 2015',
-            style: descriptionStyle.merge(const TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
-          ),
-          Text(
-            'Bachelor Degree in Computer and Biomedical Engineering',
-            style: descriptionStyle,
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Scientific High School Luigi Siciliani, Catanzaro, 2005 - 2010',
-            style: descriptionStyle,
-          )
-        ]),
-      ),
-      const SizedBox(height: separatorHeight),
-      Text(
-        'CERTIFICATIONS',
-        style: titleStyle,
-      ),
-      Container(
-        child: Text(
-          '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship',
-          style: descriptionStyle,
+            ),
+        const SizedBox(height: separatorHeight),
+        Text(
+          labels[state.language]?['trainingTitle'] ?? '',
+          style: titleStyle,
         ),
-      ),
-      const SizedBox(height: separatorHeight),
-    ]);
+        Container(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(
+              'Politecnico di Milano, 2023 ',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+            ),
+            Text(
+              labels[state.language]?['study1'] ?? '',
+              style: descriptionStyle,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Università Magna Graecia di Catanzaro, 2017 ',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+            ),
+            Text(
+              labels[state.language]?['study2'] ?? '',
+              style: descriptionStyle,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Università Magna Graecia di Catanzaro, 2015',
+              style: descriptionStyle.merge(const TextStyle(
+                fontWeight: FontWeight.bold,
+              )),
+            ),
+            Text(
+              labels[state.language]?['study3'] ?? '',
+              style: descriptionStyle,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Scientific High School Luigi Siciliani, Catanzaro, 2005 - 2010',
+              style: descriptionStyle,
+            )
+          ]),
+        ),
+        const SizedBox(height: separatorHeight),
+        Text(
+          labels[state.language]?['certificationsTitle'] ?? '',
+          style: titleStyle,
+        ),
+        Container(
+          child: Text(
+            '- AWS Cloud Practitioner \n- Adobe Experience Manager Sites Developer \n- Salesforce AI Associate \n- Business English Level 10/10 by Learnship',
+            style: descriptionStyle,
+          ),
+        ),
+        const SizedBox(height: separatorHeight),
+      ]);
+    });
   }
 }
 
