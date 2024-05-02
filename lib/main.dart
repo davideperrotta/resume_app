@@ -396,8 +396,8 @@ class MainPageComponent extends StatelessWidget {
                               context.read<OptionsCubit>().setLanguage('en');
                             },
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Colors.white), // Colore di sfondo del bottone
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
                             ),
                             child: const Text('\u{1F1EC}\u{1F1E7}'),
                           ),
@@ -406,8 +406,8 @@ class MainPageComponent extends StatelessWidget {
                               context.read<OptionsCubit>().setLanguage('it');
                             },
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Colors.white), // Colore di sfondo del bottone
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
                             ),
                             child: const Text('\u{1F1EE}\u{1F1F9}'),
                           ),
@@ -416,8 +416,8 @@ class MainPageComponent extends StatelessWidget {
                               context.read<OptionsCubit>().setLanguage('es');
                             },
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Colors.white), // Colore di sfondo del bottone
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
                             ),
                             child: const Text('\u{1F1EA}\u{1F1F8}'),
                           ),
