@@ -364,9 +364,9 @@ class MainPageComponent extends StatelessWidget {
                     customColor == Colors.white
                         ? ElevatedButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
+                              backgroundColor: WidgetStateProperty.all<Color>(
                                   Colors.black),
-                              foregroundColor: MaterialStateProperty.all<Color>(
+                              foregroundColor: WidgetStateProperty.all<Color>(
                                   Colors.white),
                             ),
                             onPressed: () {
@@ -376,9 +376,9 @@ class MainPageComponent extends StatelessWidget {
                           )
                         : ElevatedButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
+                              backgroundColor: WidgetStateProperty.all<Color>(
                                   Colors.white),
-                              foregroundColor: MaterialStateProperty.all<Color>(
+                              foregroundColor: WidgetStateProperty.all<Color>(
                                   Colors.black),
                             ),
                             onPressed: () {
@@ -406,7 +406,7 @@ class MainPageComponent extends StatelessWidget {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                              WidgetStateProperty.all(Colors.white),
                         ),
                         child: const Text('\u{1F1EC}\u{1F1E7}'),
                       ),
@@ -419,7 +419,7 @@ class MainPageComponent extends StatelessWidget {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                              WidgetStateProperty.all(Colors.white),
                         ),
                         child: const Text('\u{1F1EE}\u{1F1F9}'),
                       ),
@@ -432,7 +432,7 @@ class MainPageComponent extends StatelessWidget {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
+                              WidgetStateProperty.all(Colors.white),
                         ),
                         child: const Text('\u{1F1EA}\u{1F1F8}'),
                       ),
