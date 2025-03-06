@@ -160,7 +160,7 @@ class RightColumn extends StatelessWidget {
               style: descriptionStyle,
             ),
             Text(
-              'Main skills: JavaScript, TypeScript, React, React Native, Sass, NextJS, NestJS, Flutter, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python',
+              'Main skills: JavaScript, TypeScript, React, React Native, Redux, Sass, NextJS, NestJS, Flutter, Cubit, Bloc, NodeJS, Redis, WebSocket, MongoDB, AWS Cloud, Docker, CI/CD, Python',
               style: descriptionStyle.merge(const TextStyle(
                 fontStyle: FontStyle.italic,
                 fontSize: 14,
